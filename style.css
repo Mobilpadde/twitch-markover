@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+
+  --darkness: #0a0a0a;
+  --blueish: #14213d;
+  --orange: #fca311;
+  --light: #e5e5e5;
+  --lighter: #f5f5f5;
+
+  background: var(--darkness);
+  color: var(--light);
+}
+
+.msg {
+  margin: 8px;
+}
+
+.msg .channel {
+  opacity: 0.4;
+}
+
+.msg .user {
+  background-color: var(--lighter);
+  color: var(--blueish);
+}
+
+.msg .message::after {
+  content: attr(title);
+  color: var(--orange);
+  text-align: right;
+  position: relative;
+  right: -10px;
+}
