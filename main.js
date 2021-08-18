@@ -49,6 +49,16 @@ const say = (channel, username, markov, message) => {
 };
 
 const connect = () => {
+  if (!!client) {
+    const d = new Date();
+    say(
+      "status: ",
+      "disconnected",
+      ` at ${d.toLocaleTimeString()}`,
+      `status: disconnected at ${d.toLocaleTimeString()}`
+    );
+  }
+
   client = new tmi.Client({
     connection: {
       secure: true,
