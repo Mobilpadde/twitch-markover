@@ -2,6 +2,10 @@
   font-size: 12px;
 }
 
+* {
+  margin: 0;
+}
+
 body {
   font: 1rem/1.1 sans-serif;
 
@@ -22,11 +26,34 @@ body {
 }
 
 .msg {
-  margin: 8px;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.msg * {
+  padding: 0.125rem;
+  margin: 0.125rem;
+}
+
+.msg:nth-child(odd) {
+  background-color: var(--blueish);
+}
+
+.msg a,
+.msg a:visited,
+.msg a:hover {
+  color: var(--light);
+}
+
+.msg .info {
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .msg .channel {
   opacity: 0.4;
+  text-align: right;
 }
 
 .msg .user {
@@ -34,14 +61,23 @@ body {
   color: var(--blueish);
 }
 
+.msg .message {
+  display: inline-flex;
+  flex-direction: column;
+}
+
 .msg .message::after {
-  content: "( " attr(title) " )";
+  content: attr(title);
   color: var(--orange);
-  text-align: right;
-  position: relative;
-  right: -10px;
+}
+
+.msg .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 .msg .utter {
   margin-left: 1rem;
+  height: 100%;
 }
