@@ -1,8 +1,8 @@
-import { Blahkov } from "./lib/markov";
+import { Markov } from "./lib/markov";
 
 import "./style.css";
 
-const bk = Blahkov();
+const mk = Markov();
 
 let client;
 const connect = () => {
@@ -18,12 +18,12 @@ const connect = () => {
 
   // var synth = window.speechSynthesis
   client.on("message", (channel, tags, message) => {
-    let word = bk.update(message);
+    let word = mk.update(message);
 
     const len = message.length; //~~(Math.random() * message.length)
     let resp = word;
     for (let i = 0; i < len; i++) {
-      word = bk.gen(word);
+      word = mk.gen(word);
       resp += " " + word;
       resp = resp.trim();
     }
@@ -62,3 +62,5 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!!client) client.disconnect();
   connect();
 });
+
+document.getElementById("clear").addEventListener("click", mk.clear);
