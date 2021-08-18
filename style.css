@@ -64,6 +64,7 @@ body {
 .msg .message {
   display: inline-flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .msg .message::after {
