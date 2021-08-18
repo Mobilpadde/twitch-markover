@@ -35,9 +35,13 @@ body {
 }
 
 .msg .message::after {
-  content: attr(title);
+  content: "( " attr(title) " )";
   color: var(--orange);
   text-align: right;
   position: relative;
   right: -10px;
+}
+
+.msg .utter {
+  margin-left: 1rem;
 }

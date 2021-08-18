@@ -3,8 +3,9 @@ import { Markov } from "./lib/markov";
 import "./style.css";
 
 const mk = Markov();
-
+const synth = window.speechSynthesis;
 let client;
+
 const connect = () => {
   client = new tmi.Client({
     connection: {
@@ -41,7 +42,6 @@ const connect = () => {
 
   client.connect();
 
-  // var synth = window.speechSynthesis
   client.on("message", (channel, tags, message) => {
     let word = mk.update(message);
 
@@ -53,26 +53,33 @@ const connect = () => {
       resp = resp.trim();
     }
 
-    // var utterThis = new SpeechSynthesisUtterance(resp)
-    // synth.speak(utterThis)
     const container = document.createElement("div");
     const chnl = document.createElement("span");
     const user = document.createElement("span");
     const msg = document.createElement("span");
+    const speech = document.createElement("button");
 
     container.classList.add("msg");
     chnl.classList.add("channel");
     user.classList.add("user");
     msg.classList.add("message");
+    speech.classList.add("utter");
 
     container.append(chnl);
     container.append(user);
     container.append(msg);
+    container.append(speech);
 
     chnl.innerText = `${channel} `;
     user.innerText = tags["display-name"];
     msg.innerText = `: ${resp}`;
     msg.title = message;
+    speech.innerText = "Utter";
+
+    speech.addEventListener("click", () => {
+      const say = new SpeechSynthesisUtterance(resp);
+      synth.speak(say);
+    });
 
     document.body.prepend(container);
   });
