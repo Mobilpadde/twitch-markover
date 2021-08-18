@@ -14,6 +14,31 @@ const connect = () => {
     channels: window.location.hash.slice(1).split(","),
   });
 
+  client.on("connected", () => {
+    const d = new Date();
+
+    const container = document.createElement("div");
+    const chnl = document.createElement("span");
+    const user = document.createElement("span");
+    const msg = document.createElement("span");
+
+    container.classList.add("msg");
+    chnl.classList.add("channel");
+    user.classList.add("user");
+    msg.classList.add("message");
+
+    container.append(chnl);
+    container.append(user);
+    container.append(msg);
+
+    chnl.innerText = "status: ";
+    user.innerText = "connected";
+    msg.innerText = " at " + d.toLocaleTimeString();
+    msg.title = `status: connected at ${d.toLocaleTimeString()}`;
+
+    document.body.prepend(container);
+  });
+
   client.connect();
 
   // var synth = window.speechSynthesis
