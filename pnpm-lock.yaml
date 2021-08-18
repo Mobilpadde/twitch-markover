@@ -1,10 +1,12 @@
 lockfileVersion: 5.3
 
 specifiers:
+  store: ^2.0.12
   tmi.js: ^1.8.4
   vite: ^2.4.4
 
 dependencies:
+  store: 2.0.12
   tmi.js: 1.8.4
 
 devDependencies:
@@ -89,6 +91,10 @@ packages:
     resolution: {integrity: sha512-/3GptzWzu0+0MBQFrDKzw/DvvMTUORvgY6k6jd/VS6iCR4RDTKWH6v6WPwQoUO8667uQEf9Oe38DxAYWY5F/Ug==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /store/2.0.12:
+    resolution: {integrity: sha1-jFNOKguDH3K3X8XxEZhXxE711ZM=}
+    dev: false
 
   /tmi.js/1.8.4:
     resolution: {integrity: sha512-mMVIVSElRDLu0b+rYIsNWs2/3DwcwaW/2tBS+IwUUnKKJuf/KPvgfDVfKeb/EiNOS6KIaMpWotbnITHssbZiKg==}
